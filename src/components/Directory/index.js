@@ -1,32 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ShopMen from './../../assets/shopMens.jpg';
-import ShopWomen from './../../assets/shopWomens.jpg';
-import './styles.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import Fashion from "./../../assets/fashion1.jpg";
+import Cosmetics from "./../../assets/cosmetics.jpg";
+import "./styles.scss";
 
-const Directory = props => {
+const Directory = (props) => {
   return (
     <div className="directory">
       <div className="wrap">
         <div
           className="item"
           style={{
-            backgroundImage: `url(${ShopWomen})`
+            backgroundImage: `url(${Cosmetics})`,
           }}
         >
-          <Link to="/search/womens">
-            Shop Womens
-          </Link>
+          <Link to="/search/cosmetics">Cosmetics</Link>
         </div>
         <div
           className="item"
           style={{
-            backgroundImage: `url(${ShopMen})`
+            backgroundImage: `url(${Fashion})`,
           }}
         >
-          <Link to="/search/mens">
-            Shop Mens
-          </Link>
+          <Link to="/search/fashion">Fashion</Link>
         </div>
       </div>
     </div>
