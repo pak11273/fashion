@@ -2,6 +2,10 @@
 @import "./Navbar.module.scss";
 @import "./Home.module.scss";
 @import "./Footer.module.scss";
+@import "./Signin.module.scss";
+@import "./components//AuthWrapper.module.scss";
+@import "./components//FormInput.module.scss";
+@import "./components//Button.module.scss";
 
 html {
   font-size: 62.5%;
