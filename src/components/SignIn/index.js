@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Link from "next/link";
-
+import React, { useEffect, useState } from "react";
 import {
   emailSignInStart,
   googleSignInStart,
 } from "./../../redux/User/user.actions";
+import { useDispatch, useSelector } from "react-redux";
 
 import AuthWrapper from "./../AuthWrapper";
-import FormInput from "./../forms/FormInput";
 import Button from "./../forms/Button";
+import FormInput from "./../forms/FormInput";
+import Link from "next/link";
+import { firebase } from "../../firebase/init";
+import { useHistory } from "react-router-dom";
+
+import {
+  GoogleProvider,
+  getCurrentUser,
+  handleUserProfile,
+} from "../../firebase/utils";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -40,10 +46,16 @@ const SignIn = (props) => {
     dispatch(emailSignInStart({ email, password }));
   };
 
-  const handleGoogleSignIn = () => {
-    console.log("signin: ", googleSignInStart);
-    console.log("dis: ", dispatch);
+  const handleGoogleSignIn = async () => {
     dispatch(googleSignInStart());
+    // try {
+    //   const auth = firebase.auth();
+    //   const { user } = await auth.signInWithPopup(GoogleProvider);
+    //   await getSnapshotFromUserAuth(user);
+    //   console.log("user: ", user);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const configAuthWrapper = {

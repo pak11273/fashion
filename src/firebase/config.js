@@ -7,6 +7,7 @@ export const firebaseConfig = {
   // appId: process.env.APPID,
   // measurementId: process.env.MEASUREMENTID,
   apiKey: "AIzaSyCdYWbMhEIaBZP_H1LFvFijod0xq0T2IbU",
+  clientEmail: "isaac.pak.2024@gmail.com",
   authDomain: "wooweb-2e58a.firebaseapp.com",
   projectId: "wooweb-2e58a",
   storageBucket: "wooweb-2e58a.appspot.com",
