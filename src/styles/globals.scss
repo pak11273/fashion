@@ -1,7 +1,14 @@
+@import "./Reset.module.scss";
 @import "./Navbar.module.scss";
+@import "./Home.module.scss";
+@import "./Footer.module.scss";
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
+}
+
+#__next {
+  height: 100%;
 }
 
 html,
@@ -13,8 +20,7 @@ body {
 html,
 body,
 #root,
-.App,
-.fullHeight {
+.App {
   height: 100%;
 }
 
@@ -71,6 +77,10 @@ a:hover {
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+}
+
+.mainContainer {
+  height: 100%;
 }
 
 .main {

@@ -9,7 +9,7 @@ import { wrapper } from "../redux/createStore";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <div className="mainContainer">
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
@@ -21,9 +21,9 @@ function MyApp({ Component, pageProps }) {
         ></link>
       </Head>
       <HomepageLayout>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </HomepageLayout>
-    </>
+    </div>
   );
 }
 

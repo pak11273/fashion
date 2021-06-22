@@ -4,11 +4,11 @@ import React from "react";
 
 const HomepageLayout = (props) => {
   return (
-    <div className="fullHeight">
+    <>
       <Navbar {...props} />
       {props.children}
-      {/* <Footer /> */}
-    </div>
+      <Footer />
+    </>
   );
 };
 
