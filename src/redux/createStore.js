@@ -1,11 +1,12 @@
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import createSagaMiddle from 'redux-saga';
-import { persistStore } from 'redux-persist';
+import { applyMiddleware, createStore } from "redux";
 
-import rootReducer from './rootReducer';
-import rootSaga from './rootSaga';
+import createSagaMiddle from "redux-saga";
+import { createWrapper } from "next-redux-wrapper";
+import logger from "redux-logger";
+import { persistStore } from "redux-persist";
+import rootReducer from "./rootReducer";
+import rootSaga from "./rootSaga";
+import thunk from "redux-thunk";
 
 const sagaMiddleware = createSagaMiddle();
 export const middlewares = [thunk, sagaMiddleware, logger];
@@ -15,7 +16,9 @@ sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
+export const wrapper = createWrapper(() => store);
+
 export default {
   store,
-  persistor
+  persistor,
 };

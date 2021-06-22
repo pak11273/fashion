@@ -1,15 +1,19 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-import { firebaseConfig } from './config';
+import "firebase/firestore";
+import "firebase/auth";
 
-firebase.initializeApp(firebaseConfig);
+import firebase from "firebase/app";
+import { firebaseConfig } from "./config";
+
+if (typeof window !== "undefined" && !firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig).firestore();
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
-GoogleProvider.setCustomParameters({ prompt: 'select_account' });
+GoogleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const handleUserProfile = async ({ userAuth, additionalData }) => {
   if (!userAuth) return;
@@ -21,7 +25,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
   if (!snapshot.exists) {
     const { displayName, email } = userAuth;
     const timestamp = new Date();
-    const userRoles = ['user'];
+    const userRoles = ["user"];
 
     try {
       await userRef.set({
@@ -29,9 +33,9 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
         email,
         createdDate: timestamp,
         userRoles,
-        ...additionalData
+        ...additionalData,
       });
-    } catch(err) {
+    } catch (err) {
       // console.log(err);
     }
   }
@@ -41,9 +45,9 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
 
 export const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       unsubscribe();
       resolve(userAuth);
     }, reject);
-  })
-}
+  });
+};

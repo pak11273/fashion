@@ -1,37 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { signOutUserStart } from "./../../redux/User/user.actions";
-import { selectCartItemsCount } from "./../../redux/Cart/cart.selectors";
-import "./styles.scss";
+// import { useLocation } from "react-router-dom";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 
 import Logo from "./../../assets/logo.png";
+import { selectCartItemsCount } from "./../../redux/Cart/cart.selectors";
+import { signOutUserStart } from "./../../redux/User/user.actions";
+import styles from "../../styles/Header.module.scss";
 
 const mapState = (state) => ({
-  currentUser: state.user.currentUser,
-  totalNumCartItems: selectCartItemsCount(state),
+  // currentUser: state.user.currentUser,
+  // totalNumCartItems: selectCartItemsCount(state),
 });
 
 const Header = (props) => {
-  const location = useLocation();
+  // const location = useLocation();
   const [activeMenu, setActiveMenu] = useState(false);
-  const dispatch = useDispatch();
-  const { currentUser, totalNumCartItems } = useSelector(mapState);
+  // const dispatch = useDispatch();
+  // const { currentUser, totalNumCartItems } = useSelector(mapState);
 
-  const signOut = () => {
-    dispatch(signOutUserStart());
-  };
+  // const signOut = () => {
+  //   dispatch(signOutUserStart());
+  // };
 
-  useEffect(() => {
-    setActiveMenu(false);
-  }, [location]);
+  // useEffect(() => {
+  //   setActiveMenu(false);
+  // }, [location]);
 
   return (
     <header className="header">
       <div className="wrap">
         <div className="logo">
-          <Link to="/">
-            {/* <img src={Logo} alt="Woo LOGO" /> */}
+          {/* <Link href="/">
+             <img src={Logo} alt="Woo LOGO" /> 
             <h1
               style={{
                 textTransform: "uppercase",
@@ -40,30 +41,25 @@ const Header = (props) => {
             >
               Woo
             </h1>
-          </Link>
+          </Link> */}
         </div>
 
         <nav className={`mainMenu ${activeMenu ? "active" : ""}`}>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
+            <li>{/* <Link from="/">Home</Link> */}</li>
+            <li>{/* <Link from="/search">Search</Link> */}</li>
           </ul>
         </nav>
 
         <div className="callToActions">
           <ul>
             <li>
-              <Link to="/cart">
-                Your Cart ({totalNumCartItems})
+              <Link href="/cart">
+                {/* Your Cart ({totalNumCartItems}) */}
                 <i class="fas fa-shopping-basket"></i>
               </Link>
             </li>
-
-            {currentUser && [
+            {/* {currentUser && [
               <li key={1}>
                 <Link to="/dashboard">
                   My Account
@@ -76,20 +72,18 @@ const Header = (props) => {
                   <i class="fas fa-sign-out-alt"></i>
                 </span>
               </li>,
-            ]}
-
-            {!currentUser && [
-              <li key={1} className="hideOnMobile">
-                <Link to="/registration">Register</Link>
-              </li>,
+            ]} */}
+            {/* {!currentUser && [
+              // <li key={1} className="hideOnMobile">
+              //   <Link href="/registration">Register</Link>
+              // </li>,
               <li key={2}>
-                <Link to="/login">
+                {/* <Link href="/login">
                   Login
                   <i class="fas fa-user-circle"></i>
-                </Link>
-              </li>,
-            ]}
-
+                </Link> */}
+            {/* </li>, */}
+            {/* ]} */} */}
             <li className="mobileMenu">
               <span onClick={() => setActiveMenu(!activeMenu)}>
                 <i className="fas fa-bars"></i>
@@ -103,7 +97,7 @@ const Header = (props) => {
 };
 
 Header.defaultProps = {
-  currentUser: null,
+  // currentUser: null,
 };
 
 export default Header;

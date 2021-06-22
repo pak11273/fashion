@@ -1,8 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Fashion from "./../../assets/fashion1.jpg";
 import Cosmetics from "./../../assets/cosmetics.jpg";
-import "./styles.scss";
+import Fashion from "./../../assets/fashion1.jpg";
+import Link from "next/link";
+import React from "react";
 
 const Directory = (props) => {
   return (
@@ -14,16 +13,16 @@ const Directory = (props) => {
             backgroundImage: `url(${Cosmetics})`,
           }}
         >
-          <Link to="/search/cosmetics">Cosmetics</Link>
+          <Link href="/cosmetics">Cosmetics</Link>
         </div>
-        <div
+        {/* <div
           className="item"
           style={{
             backgroundImage: `url(${Fashion})`,
           }}
         >
           <Link to="/search/fashion">Fashion</Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
