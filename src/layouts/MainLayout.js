@@ -1,14 +1,12 @@
-import React from 'react';
-import Header from './../components/Header';
-import Footer from './../components/Footer';
+import Footer from "./../components/Footer";
+import Navbar from "../components/Navbar";
+import React from "react";
 
-const MainLayout = props => {
+const MainLayout = (props) => {
   return (
     <div>
-      <Header {...props} />
-      <div className="main">
-        {props.children}
-      </div>
+      <Navbar {...props} />
+      <div className="main">{props.children}</div>
       <Footer />
     </div>
   );

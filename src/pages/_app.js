@@ -2,14 +2,28 @@
 
 import "../styles/globals.scss";
 
+import Head from "next/head";
 import HomepageLayout from "../layouts/HomepageLayout";
+import React from "react";
 import { wrapper } from "../redux/createStore";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <HomepageLayout>
-      <Component {...pageProps} />;
-    </HomepageLayout>
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+          rel="stylesheet"
+        ></link>
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <HomepageLayout>
+        <Component {...pageProps} />;
+      </HomepageLayout>
+    </>
   );
 }
 
