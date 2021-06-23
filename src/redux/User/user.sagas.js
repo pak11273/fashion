@@ -6,9 +6,9 @@ import {
   handleUserProfile,
 } from "./../../firebase/utils";
 import { all, call, put, takeLatest } from "redux-saga/effects";
+import { signInSuccess, signOutUserSuccess } from "./user.actions";
 
 import { firebase } from "../../firebase/init";
-import { signInSuccess } from "./user.actions";
 // import firebase from "firebase/app";
 // import { handleResetPasswordAPI } from "./user.helpers";
 import userTypes from "./user.types";
@@ -63,18 +63,18 @@ export function* onEmailSignInStart() {
 //   yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
 // }
 
-// export function* signOutUser() {
-//   try {
-//     yield auth.signOut();
-//     yield put(signOutUserSuccess());
-//   } catch (err) {
-//     // console.log(err);
-//   }
-// }
+export function* signOutUser() {
+  try {
+    yield firebase.auth().signOut();
+    yield put(signOutUserSuccess());
+  } catch (err) {
+    // console.log(err);
+  }
+}
 
-// export function* onSignOutUserStart() {
-//   yield takeLatest(userTypes.SIGN_OUT_USER_START, signOutUser);
-// }
+export function* onSignOutUserStart() {
+  yield takeLatest(userTypes.SIGN_OUT_USER_START, signOutUser);
+}
 
 // export function* signUpUser({
 //   payload: { displayName, email, password, confirmPassword },
@@ -128,7 +128,7 @@ export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
     //     call(onCheckUserSession),
-    //     call(onSignOutUserStart),
+    call(onSignOutUserStart),
     //     call(onSignUpUserStart),
     //     call(onResetPasswordStart),
     call(onGoogleSignInStart),
