@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import React from "react";
 import { checkUserIsAdmin } from "./../../Utils";
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ const AdminToolbar = (props) => {
     <div className="adminToolbar">
       <ul>
         <li>
-          <Link to="/admin">My admin</Link>
+          <Link href="/admin">My admin</Link>
         </li>
       </ul>
     </div>

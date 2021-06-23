@@ -4,10 +4,10 @@ import {
   setProduct,
 } from "./../../redux/Products/products.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
 
 import Button from "./../forms/Button";
 import { addProduct } from "./../../redux/Cart/cart.actions";
+import { useRouter } from "next/router";
 
 const mapState = (state) => ({
   product: state.productsData.product,
@@ -15,8 +15,8 @@ const mapState = (state) => ({
 
 const ProductCard = ({}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { productID } = useParams();
+  const router = useRouter();
+  const { productID } = router.query;
   const { product } = useSelector(mapState);
 
   const { productThumbnail, productName, productPrice, productDesc } = product;
@@ -32,7 +32,7 @@ const ProductCard = ({}) => {
   const handleAddToCart = (product) => {
     if (!product) return;
     dispatch(addProduct(product));
-    history.push("/cart");
+    router.push("/cart");
   };
 
   const configAddToCartBtn = {

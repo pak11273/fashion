@@ -1,21 +1,20 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser
+  currentUser: user.currentUser,
 });
 
-const useAuth = props => {
+const useAuth = (props) => {
   const { currentUser } = useSelector(mapState);
-  const history = useHistory();
+  const router = useRouter();
 
   useEffect(() => {
     if (!currentUser) {
-      history.push('/login');
+      router.push("/login");
     }
-
-  }, [currentUser]);
+  }, [currentUser]); // eslint-disable-line
 
   return currentUser;
 };

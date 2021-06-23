@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
 
 import FormSelect from "./../forms/FormSelect";
 import LoadMore from "./../LoadMore";
 import Product from "./Product";
 import { fetchProductsStart } from "./../../redux/Products/products.actions";
+import { useRouter } from "next/router";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -13,19 +13,19 @@ const mapState = ({ productsData }) => ({
 
 const ProductResults = ({}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { filterType } = useParams();
+  const router = useRouter();
+  const { filterType } = router.query;
   const { products } = useSelector(mapState);
 
   const { data, queryDoc, isLastPage } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
-  }, [filterType]);
+  }, [filterType]); // eslint-disable-line
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/search/${nextFilter}`);
+    router.push(`/search/${nextFilter}`);
   };
 
   if (!Array.isArray(data)) return null;

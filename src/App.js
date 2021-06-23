@@ -1,32 +1,33 @@
 import "./default.scss";
 
 import React, { useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
 
-import Admin from "./pages/Admin";
-import AdminLayout from "./layouts/AdminLayout";
-// components
-import AdminToolbar from "./components/AdminToolbar";
-import Cart from "./pages/Cart";
-import Dashboard from "./pages/Dashboard";
-import DashboardLayout from "./layouts/DashboardLayout";
-// pages
-import Homepage from "./pages";
-import HomepageLayout from "./layouts/HomepageLayout";
-import Login from "./pages/Login";
-// layouts
-import MainLayout from "./layouts/MainLayout";
-import Order from "./pages/Order";
-import Payment from "./pages/Payment";
-import ProductDetails from "./pages/ProductDetails";
-import Recovery from "./pages/Recovery";
-import Registration from "./pages/Registration";
-import Search from "./pages/search";
-import WithAdminAuth from "./hoc/withAdminAuth";
-// hoc
-import WithAuth from "./hoc/withAuth";
-import { checkUserSession } from "./redux/User/user.actions";
-import { useDispatch } from "react-redux";
+// import Admin from "./pages/Admin";
+// import AdminLayout from "./layouts/AdminLayout";
+// // components
+// import AdminToolbar from "./components/AdminToolbar";
+// import Cart from "./pages/Cart";
+// import Dashboard from "./pages/Dashboard";
+// import DashboardLayout from "./layouts/DashboardLayout";
+// // pages
+// import Homepage from "./pages";
+// import HomepageLayout from "./layouts/HomepageLayout";
+// import Login from "./pages/Login";
+// // layouts
+// import MainLayout from "./layouts/MainLayout";
+// import Order from "./pages/Order";
+// import Payment from "./pages/Payment";
+// import ProductDetails from "./pages/ProductDetails";
+// import Recovery from "./pages/Recovery";
+// import Registration from "./pages/Registration";
+// import Search from "./pages/search";
+// import WithAdminAuth from "./hoc/withAdminAuth";
+// // hoc
+// import WithAuth from "./hoc/withAuth";
+// import { checkUserSession } from "./redux/User/user.actions";
+// import { useDispatch } from "react-redux";
+
+// import { Route, Switch } from "react-router-dom";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const App = (props) => {
   return (
     <div className="App">
       <AdminToolbar />
-      <Switch>
+      {/* <Switch>
         <Route
           exact
           path="/"
@@ -145,7 +146,7 @@ const App = (props) => {
             </WithAdminAuth>
           )}
         />
-      </Switch>
+      </Switch> */}
     </div>
   );
 };

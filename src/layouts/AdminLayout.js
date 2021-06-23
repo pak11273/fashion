@@ -1,6 +1,6 @@
 import Footer from "./../components/Footer";
+import Link from "next/link";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
 import React from "react";
 import VerticalNav from "./../components/VerticalNav";
 import { signOutUserStart } from "./../redux/User/user.actions";
@@ -21,7 +21,7 @@ const AdminLayout = (props) => {
           <VerticalNav>
             <ul>
               <li>
-                <Link to="/admin">Home</Link>
+                <Link href="/admin">Home</Link>
               </li>
               <li>
                 <span className="signOut" onClick={() => signOut()}>

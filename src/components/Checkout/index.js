@@ -7,7 +7,7 @@ import Button from "./../forms/Button";
 import Item from "./Item";
 import React from "react";
 import { createStructuredSelector } from "reselect";
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
 const mapState = createStructuredSelector({
@@ -16,7 +16,7 @@ const mapState = createStructuredSelector({
 });
 
 const Checkout = ({}) => {
-  const history = useHistory();
+  const router = useRouter();
   const { cartItems, total } = useSelector(mapState);
 
   const errMsg = "You have no items in your cart.";
@@ -89,13 +89,13 @@ const Checkout = ({}) => {
                             <tbody>
                               <tr>
                                 <td>
-                                  <Button onClick={() => history.goBack()}>
+                                  <Button onClick={() => router.goBack()}>
                                     Continue Shopping
                                   </Button>
                                 </td>
                                 <td>
                                   <Button
-                                    onClick={() => history.push("/payment")}
+                                    onClick={() => router.push("/payment")}
                                   >
                                     Checkout
                                   </Button>
