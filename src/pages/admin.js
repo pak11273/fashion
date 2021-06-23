@@ -3,15 +3,15 @@ import {
   addProductStart,
   deleteProductStart,
   fetchProductsStart,
-} from "./../../redux/Products/products.actions";
+} from "../redux/Products/products.actions";
 import { useDispatch, useSelector } from "react-redux";
 
-import Button from "./../../components/forms/Button";
+import Button from "../components/forms/Button";
 import CKEditor from "ckeditor4-react";
-import FormInput from "./../../components/forms/FormInput";
-import FormSelect from "./../../components/forms/FormSelect";
-import LoadMore from "./../../components/LoadMore";
-import Modal from "./../../components/Modal";
+import FormInput from "../components/forms/FormInput";
+import FormSelect from "../components/forms/FormSelect";
+import LoadMore from "../components/LoadMore";
+import Modal from "../components/Modal";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -175,7 +175,7 @@ const Admin = (props) => {
                               <img className="thumb" src={productThumbnail} />
                             </td>
                             <td>{productName}</td>
-                            <td>£{productPrice}</td>
+                            <td>${productPrice}</td>
                             <td>
                               <Button
                                 onClick={() =>

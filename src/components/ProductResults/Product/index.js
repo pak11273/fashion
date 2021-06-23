@@ -43,7 +43,7 @@ const Product = (product) => {
             </span>
           </li>
           <li>
-            <span className="price">£{productPrice}</span>
+            <span className="price">${productPrice}</span>
           </li>
           <li>
             <div className="addToCart">

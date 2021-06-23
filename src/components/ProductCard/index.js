@@ -50,7 +50,7 @@ const ProductCard = ({}) => {
             <h1>{productName}</h1>
           </li>
           <li>
-            <span>£{productPrice}</span>
+            <span>${productPrice}</span>
           </li>
           <li>
             <div className="addToCart">

@@ -5,7 +5,6 @@ import React, { useEffect } from "react";
 // import Admin from "./pages/Admin";
 // import AdminLayout from "./layouts/AdminLayout";
 // // components
-// import AdminToolbar from "./components/AdminToolbar";
 // import Cart from "./pages/Cart";
 // import Dashboard from "./pages/Dashboard";
 // import DashboardLayout from "./layouts/DashboardLayout";
@@ -38,7 +37,6 @@ const App = (props) => {
 
   return (
     <div className="App">
-      <AdminToolbar />
       {/* <Switch>
         <Route
           exact

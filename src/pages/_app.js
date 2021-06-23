@@ -2,11 +2,12 @@
 
 import "../styles/globals.scss";
 
+import AdminToolbar from "../components/AdminToolbar";
+import { AuthProvider } from "../context/auth";
 import Head from "next/head";
 import HomepageLayout from "../layouts/HomepageLayout";
 import React from "react";
 import { wrapper } from "../redux/createStore";
-import { AuthProvider } from "../context/auth";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }) {
             rel="stylesheet"
           ></link>
         </Head>
+        <AdminToolbar />
         <HomepageLayout>
           <Component {...pageProps} />
         </HomepageLayout>

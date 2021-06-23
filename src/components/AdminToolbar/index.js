@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { checkUserIsAdmin } from "./../../Utils";
+import { checkUserIsAdmin } from "../../Utils";
 import { useSelector } from "react-redux";
 
 const mapState = ({ user }) => ({
@@ -17,7 +17,7 @@ const AdminToolbar = (props) => {
     <div className="adminToolbar">
       <ul>
         <li>
-          <Link href="/admin">My admin</Link>
+          <Link href="/admin">admin</Link>
         </li>
       </ul>
     </div>
