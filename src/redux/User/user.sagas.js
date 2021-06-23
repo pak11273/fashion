@@ -6,7 +6,7 @@ import {
   handleUserProfile,
 } from "./../../firebase/utils";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { signInSuccess, signOutUserSuccess } from "./user.actions";
+import { signInSuccess, signOutUserSuccess, userError } from "./user.actions";
 
 import { firebase } from "../../firebase/init";
 // import firebase from "firebase/app";
@@ -76,27 +76,29 @@ export function* onSignOutUserStart() {
   yield takeLatest(userTypes.SIGN_OUT_USER_START, signOutUser);
 }
 
-// export function* signUpUser({
-//   payload: { displayName, email, password, confirmPassword },
-// }) {
-//   if (password !== confirmPassword) {
-//     const err = ["Password Don't match"];
-//     yield put(userError(err));
-//     return;
-//   }
+export function* signUpUser({
+  payload: { displayName, email, password, confirmPassword },
+}) {
+  if (password !== confirmPassword) {
+    const err = ["Password Don't match"];
+    yield put(userError(err));
+    return;
+  }
 
-//   try {
-//     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-//     const additionalData = { displayName };
-//     yield getSnapshotFromUserAuth(user, additionalData);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+  try {
+    const { user } = yield firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password);
+    const additionalData = { displayName };
+    yield getSnapshotFromUserAuth(user, additionalData);
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-// export function* onSignUpUserStart() {
-//   yield takeLatest(userTypes.SIGN_UP_USER_START, signUpUser);
-// }
+export function* onSignUpUserStart() {
+  yield takeLatest(userTypes.SIGN_UP_USER_START, signUpUser);
+}
 
 // export function* resetPassword({ payload: { email } }) {
 //   try {
@@ -129,7 +131,7 @@ export default function* userSagas() {
     call(onEmailSignInStart),
     //     call(onCheckUserSession),
     call(onSignOutUserStart),
-    //     call(onSignUpUserStart),
+    call(onSignUpUserStart),
     //     call(onResetPasswordStart),
     call(onGoogleSignInStart),
   ]);
