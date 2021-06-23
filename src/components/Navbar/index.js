@@ -69,9 +69,9 @@ const Navbar = (props) => {
             </li>
             {currentUser && [
               <li key={1}>
-                <Link to="/dashboard">
+                <Link href="/dashboard">
                   My Account
-                  <i className="fas fa-user-circle"></i>
+                  {/* <i className="fas fa-user-circle"></i> */}
                 </Link>
               </li>,
               <li key={2}>

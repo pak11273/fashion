@@ -10,7 +10,7 @@ import Button from "./../forms/Button";
 import FormInput from "./../forms/FormInput";
 import Link from "next/link";
 import { firebase } from "../../firebase/init";
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import {
   GoogleProvider,
@@ -24,7 +24,7 @@ const mapState = ({ user }) => ({
 
 const SignIn = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const router = useRouter();
   const { currentUser } = useSelector(mapState);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +32,7 @@ const SignIn = (props) => {
   useEffect(() => {
     if (currentUser) {
       resetForm();
-      history.push("/");
+      router.push("/");
     }
   }, [currentUser]);
 
@@ -48,14 +48,6 @@ const SignIn = (props) => {
 
   const handleGoogleSignIn = async () => {
     dispatch(googleSignInStart());
-    // try {
-    //   const auth = firebase.auth();
-    //   const { user } = await auth.signInWithPopup(GoogleProvider);
-    //   await getSnapshotFromUserAuth(user);
-    //   console.log("user: ", user);
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   const configAuthWrapper = {

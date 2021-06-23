@@ -1,4 +1,4 @@
-// // import "firebase/auth";
+// import "firebase/auth";
 
 import {
   GoogleProvider,
@@ -9,13 +9,11 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 
 import { firebase } from "../../firebase/init";
 import { signInSuccess } from "./user.actions";
-// // import firebase from "firebase/app";
+// import firebase from "firebase/app";
 // import { handleResetPasswordAPI } from "./user.helpers";
 import userTypes from "./user.types";
 
 // const auth = firebase.auth();
-
-// console.log("auth: ", auth);
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
@@ -35,18 +33,21 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   }
 }
 
-// export function* emailSignIn({ payload: { email, password } }) {
-//   try {
-//     const { user } = yield auth.signInWithEmailAndPassword(email, password);
-//     yield getSnapshotFromUserAuth(user);
-//   } catch (err) {
-//     // console.log(err);
-//   }
-// }
+export function* emailSignIn({ payload: { email, password } }) {
+  console.log("hi");
+  try {
+    const { user } = yield firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password);
+    yield getSnapshotFromUserAuth(user);
+  } catch (err) {
+    // console.log(err);
+  }
+}
 
-// export function* onEmailSignInStart() {
-//   yield takeLatest(userTypes.EMAIL_SIGN_IN_START, emailSignIn);
-// }
+export function* onEmailSignInStart() {
+  yield takeLatest(userTypes.EMAIL_SIGN_IN_START, emailSignIn);
+}
 
 // export function* isUserAuthenticated() {
 //   try {
@@ -125,7 +126,7 @@ export function* onGoogleSignInStart() {
 
 export default function* userSagas() {
   yield all([
-    //     call(onEmailSignInStart),
+    call(onEmailSignInStart),
     //     call(onCheckUserSession),
     //     call(onSignOutUserStart),
     //     call(onSignUpUserStart),
