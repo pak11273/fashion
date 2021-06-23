@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import {
   addProductStart,
-  fetchProductsStart,
   deleteProductStart,
+  fetchProductsStart,
 } from "./../../redux/Products/products.actions";
-import Modal from "./../../components/Modal";
+import { useDispatch, useSelector } from "react-redux";
+
+import Button from "./../../components/forms/Button";
+import CKEditor from "ckeditor4-react";
 import FormInput from "./../../components/forms/FormInput";
 import FormSelect from "./../../components/forms/FormSelect";
-import Button from "./../../components/forms/Button";
 import LoadMore from "./../../components/LoadMore";
-import CKEditor from "ckeditor4-react";
-import "./styles.scss";
+import Modal from "./../../components/Modal";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import './styles.scss';
+import React, { useState } from "react";
 
 const Modal = ({ hideModal, toggleModal, children }) => {
   if (hideModal) return null;
@@ -7,11 +6,9 @@ const Modal = ({ hideModal, toggleModal, children }) => {
   return [
     <div className="modalOverlay" onClick={() => toggleModal()} />,
     <div className="modalWrap">
-      <div className="modal">
-        {children}
-      </div>
-    </div>
+      <div className="modal">{children}</div>
+    </div>,
   ];
-}
+};
 
 export default Modal;
