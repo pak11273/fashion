@@ -1,4 +1,4 @@
-import { firebase } from "./../../firebase/utils";
+import { firebase } from "./../../firebase/init";
 
 export const handleResetPasswordAPI = (email) => {
   const config = {

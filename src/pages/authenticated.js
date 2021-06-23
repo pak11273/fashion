@@ -1,5 +1,5 @@
 import React from "react";
-import { firebase } from "../firebase/utils";
+import { firebase } from "../firebase/init";
 import { firebaseAdmin } from "../firebase/admin";
 import nookies from "nookies";
 import { useRouter } from "next/router";
