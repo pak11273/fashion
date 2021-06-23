@@ -39,7 +39,6 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
 }
 
 export function* emailSignIn({ payload: { email, password } }) {
-  console.log("hi");
   try {
     const { user } = yield firebase
       .auth()

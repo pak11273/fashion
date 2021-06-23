@@ -36,8 +36,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "//depr.start": "react-scripts start",
-    "//depr.build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
