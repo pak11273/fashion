@@ -4,11 +4,16 @@
 @import "./Footer.module.scss";
 @import "./Signin.module.scss";
 @import "./Admin.module.scss";
-@import "./components//AuthWrapper.module.scss";
-@import "./components//FormInput.module.scss";
-@import "./components//Button.module.scss";
-@import "./components//Signup.module.scss";
-@import "./components//AdminToolbar.module.scss";
+@import "./components/AuthWrapper.module.scss";
+@import "./components/FormInput.module.scss";
+@import "./components/Button.module.scss";
+@import "./components/Signup.module.scss";
+@import "./components/AdminToolbar.module.scss";
+@import "./components/ProductResults.module.scss";
+@import "./components/FormSelect.module.scss";
+@import "./components/PaymentDetails.module.scss";
+@import "./components/ProductCard.module.scss";
+@import "./components/Checkout.module.scss";
 
 html {
   font-size: 62.5%;

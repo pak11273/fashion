@@ -14,7 +14,9 @@ const Dashboard = (props) => {
   const { currentUser, orderHistory } = useSelector(mapState);
 
   useEffect(() => {
-    dispatch(getUserOrderHistory(currentUser.id));
+    if (currentUser) {
+      dispatch(getUserOrderHistory(currentUser.id));
+    }
   }, []); // eslint-disable-line
 
   return (

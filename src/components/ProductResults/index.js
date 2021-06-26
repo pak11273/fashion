@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormSelect from "./../forms/FormSelect";
 import LoadMore from "./../LoadMore";
-import Product from "./Product";
+import Product from "../Product";
 import { fetchProductsStart } from "./../../redux/Products/products.actions";
-import { useRouter } from "next/router";
 
 const mapState = ({ productsData }) => ({
   products: productsData.products,
@@ -13,8 +12,7 @@ const mapState = ({ productsData }) => ({
 
 const ProductResults = ({}) => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const { filterType } = router.query;
+  const [filterType, setfilterType] = useState("");
   const { products } = useSelector(mapState);
 
   const { data, queryDoc, isLastPage } = products;
@@ -25,11 +23,11 @@ const ProductResults = ({}) => {
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    router.push(`/search/${nextFilter}`);
+    setfilterType(nextFilter);
   };
 
-  if (!Array.isArray(data)) return null;
-  if (data.length < 1) {
+  // if (!Array.isArray(data)) return null;
+  if (data && data.length < 1) {
     return (
       <div className="products">
         <p>No search results.</p>
@@ -45,12 +43,12 @@ const ProductResults = ({}) => {
         value: "",
       },
       {
-        name: "Fashion",
-        value: "fashion",
-      },
-      {
         name: "Cosmetics",
         value: "cosmetics",
+      },
+      {
+        name: "Fashion",
+        value: "fashion",
       },
     ],
     handleChange: handleFilter,
@@ -77,21 +75,22 @@ const ProductResults = ({}) => {
       <FormSelect {...configFilters} />
 
       <div className="productResults">
-        {data.map((product, pos) => {
-          const { productThumbnail, productName, productPrice } = product;
-          if (
-            !productThumbnail ||
-            !productName ||
-            typeof productPrice === "undefined"
-          )
-            return null;
+        {data &&
+          data.map((product, pos) => {
+            const { productThumbnail, productName, productPrice } = product;
+            if (
+              !productThumbnail ||
+              !productName ||
+              typeof productPrice === "undefined"
+            )
+              return null;
 
-          const configProduct = {
-            ...product,
-          };
+            const configProduct = {
+              ...product,
+            };
 
-          return <Product key={pos} {...configProduct} />;
-        })}
+            return <Product key={pos} {...configProduct} />;
+          })}
       </div>
 
       {!isLastPage && <LoadMore {...configLoadMore} />}

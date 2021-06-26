@@ -13,7 +13,8 @@ import React, { useEffect } from "react";
 // import HomepageLayout from "./layouts/HomepageLayout";
 // import Login from "./pages/Login";
 // // layouts
-// import MainLayout from "./layouts/MainLayout";
+import MainLayout from "./layouts/MainLayout";
+
 // import Order from "./pages/Order";
 // import Payment from "./pages/Payment";
 // import ProductDetails from "./pages/ProductDetails";
@@ -38,15 +39,6 @@ const App = (props) => {
   return (
     <div className="App">
       {/* <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <HomepageLayout>
-              <Homepage />
-            </HomepageLayout>
-          )}
-        />
         <Route
           exact
           path="/search"

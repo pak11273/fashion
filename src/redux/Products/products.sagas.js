@@ -32,9 +32,9 @@ export function* onAddProductStart() {
   yield takeLatest(productsTypes.ADD_NEW_PRODUCT_START, addProduct);
 }
 
-export function* fetchProducts({ payload }) {
+export function* fetchProducts(action) {
   try {
-    const products = yield handleFetchProducts(payload);
+    const products = yield handleFetchProducts(action.payload);
     yield put(setProducts(products));
   } catch (err) {
     // console.log(err);
@@ -61,6 +61,7 @@ export function* onDeleteProductStart() {
 export function* fetchProduct({ payload }) {
   try {
     const product = yield handleFetchProduct(payload);
+    console.log("prod: ", product);
     yield put(setProduct(product));
   } catch (err) {
     // console.log(err);

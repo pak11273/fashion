@@ -6,6 +6,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "./../forms/Button";
+import Image from "next/image";
 import { addProduct } from "./../../redux/Cart/cart.actions";
 import { useRouter } from "next/router";
 
@@ -13,16 +14,16 @@ const mapState = (state) => ({
   product: state.productsData.product,
 });
 
-const ProductCard = ({}) => {
+const ProductCard = (ff) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { productID } = router.query;
+  const { id } = router.query;
   const { product } = useSelector(mapState);
 
   const { productThumbnail, productName, productPrice, productDesc } = product;
 
   useEffect(() => {
-    dispatch(fetchProductStart(productID));
+    dispatch(fetchProductStart(id));
 
     return () => {
       dispatch(setProduct({}));
@@ -42,7 +43,17 @@ const ProductCard = ({}) => {
   return (
     <div className="productCard">
       <div className="hero">
-        <img src={productThumbnail} />
+        {productThumbnail && (
+          <Image
+            alt="thumbnail"
+            src={productThumbnail}
+            // placeholder="blur"
+            width={100}
+            height={100}
+            objectFit="cover"
+            quality={100}
+          />
+        )}
       </div>
       <div className="productDetails">
         <ul>

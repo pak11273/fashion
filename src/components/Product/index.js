@@ -1,7 +1,8 @@
-import Button from "./../../forms/Button";
+import Button from "../forms/Button";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { addProduct } from "./../../../redux/Cart/cart.actions";
+import { addProduct } from "../../redux/Cart/cart.actions";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -31,7 +32,17 @@ const Product = (product) => {
     <div className="product">
       <div className="thumb">
         <Link href={`/product/${documentID}`}>
-          <img src={productThumbnail} alt={productName} />
+          <div style={{ maxWidth: "480px", textAlign: "center" }}>
+            <Image
+              alt={productName}
+              src={productThumbnail}
+              layout="responsive"
+              height={300}
+              width={300}
+              objectFit="cover"
+              quality={100}
+            />
+          </div>
         </Link>
       </div>
 

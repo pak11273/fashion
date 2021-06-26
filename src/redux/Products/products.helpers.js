@@ -21,6 +21,9 @@ export const handleFetchProducts = ({
   startAfterDoc,
   persistProducts = [],
 }) => {
+  // export const handleFetchProducts = (args) => {
+  // console.log("args: ", args);
+  // const { filterType, startAfterDoc, persistProducts } = args;
   return new Promise((resolve, reject) => {
     const pageSize = 6;
 
@@ -68,7 +71,6 @@ export const handleDeleteProduct = (documentID) => {
       .doc(documentID)
       .delete()
       .then(() => {
-        console.log(documentID, 2);
         resolve();
       })
       .catch((err) => {

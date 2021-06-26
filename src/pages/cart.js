@@ -1,5 +1,5 @@
-import React from 'react';
-import Checkout from './../../components/Checkout';
+import Checkout from "../components/Checkout";
+import React from "react";
 
 const Cart = ({}) => {
   return (
@@ -7,6 +7,6 @@ const Cart = ({}) => {
       <Checkout />
     </div>
   );
-}
+};
 
 export default Cart;

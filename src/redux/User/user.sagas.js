@@ -53,19 +53,19 @@ export function* onEmailSignInStart() {
   yield takeLatest(userTypes.EMAIL_SIGN_IN_START, emailSignIn);
 }
 
-// export function* isUserAuthenticated() {
-//   try {
-//     const userAuth = yield getCurrentUser();
-//     if (!userAuth) return;
-//     yield getSnapshotFromUserAuth(userAuth);
-//   } catch (err) {
-//     // console.log(err);
-//   }
-// }
+export function* isUserAuthenticated() {
+  try {
+    const userAuth = yield getCurrentUser();
+    if (!userAuth) return;
+    yield getSnapshotFromUserAuth(userAuth);
+  } catch (err) {
+    // console.log(err);
+  }
+}
 
-// export function* onCheckUserSession() {
-//   yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
-// }
+export function* onCheckUserSession() {
+  yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
+}
 
 export function* signOutUser() {
   try {
@@ -134,7 +134,7 @@ export function* onGoogleSignInStart() {
 export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
-    //     call(onCheckUserSession),
+    call(onCheckUserSession),
     call(onSignOutUserStart),
     call(onSignUpUserStart),
     call(onResetPasswordStart),

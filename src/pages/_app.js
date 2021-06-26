@@ -2,17 +2,27 @@
 
 import "../styles/globals.scss";
 
+import React, { useEffect } from "react";
+
 import AdminToolbar from "../components/AdminToolbar";
 import { AuthProvider } from "../context/auth";
 import Head from "next/head";
 import HomepageLayout from "../layouts/HomepageLayout";
-import React from "react";
+import { checkUserSession } from "../redux/User/user.actions";
+import { useDispatch } from "react-redux";
 import { wrapper } from "../redux/createStore";
 
 function MyApp({ Component, pageProps }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
+
   return (
     <AuthProvider>
       <div className="mainContainer">
+        {" "}
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
