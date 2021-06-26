@@ -89,7 +89,9 @@ const Checkout = ({}) => {
                             <tbody>
                               <tr>
                                 <td>
-                                  <Button onClick={() => router.goBack()}>
+                                  <Button
+                                    onClick={() => router.push("/search")}
+                                  >
                                     Continue Shopping
                                   </Button>
                                 </td>
